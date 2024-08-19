@@ -1,0 +1,52 @@
+{
+  "datacenter": "dc1",
+  "data_dir": "/opt/consul",
+  "log_level": "INFO",
+  "node_name": "consul-node",
+  "server": true,
+  "ui": true,
+  "bind_addr": "127.0.0.1",  
+  "advertise_addr": "127.0.0.1",  
+  "services": [
+    {
+      "name": "short-url-service-1",
+      "tags": ["url-service"],
+      "address": "127.0.0.1",
+      "port": 8081,
+      "check": {
+        "http": "http://127.0.0.1:8081/health",
+        "interval": "10s"
+      }
+    },
+    {
+      "name": "short-url-service-2",
+      "tags": ["url-service"],
+      "address": "127.0.0.1",
+      "port": 8082,
+      "check": {
+        "http": "http://127.0.0.1:8082/health",
+        "interval": "10s"
+      }
+    },
+    {
+      "name": "short-url-service-3",
+      "tags": ["url-service"],
+      "address": "127.0.0.1",
+      "port": 8083,
+      "check": {
+        "http": "http://127.0.0.1:8083/health",
+        "interval": "10s"
+      }
+    },
+    {
+      "name": "haproxy",
+      "tags": ["load-balancer"],
+      "address": "127.0.0.1",
+      "port": 8080,
+      "check": {
+        "http": "http://127.0.0.1:8080/health",
+        "interval": "10s"
+      }
+    }
+  ]
+}
